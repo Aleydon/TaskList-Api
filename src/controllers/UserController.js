@@ -28,10 +28,14 @@ export default {
   // Update user
   async update(req, res) {
     const { id } = req.params;
+    await UserModel.update(req.body, { where: { id } });
+    return res.send('User updated');
   },
 
   // Delete user
   async destroy(req, res) {
     const { id } = req.params;
+    await UserModel.destroy({ where: { id } });
+    return res.send('User deleted');
   }
 };
